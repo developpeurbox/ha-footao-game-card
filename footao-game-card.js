@@ -2,7 +2,7 @@
    Footao Game Card
    ======================================================== */
 
-const FOOTAO_GAME_CARD_VERSION = "v0.1.5";
+const FOOTAO_GAME_CARD_VERSION = "v0.1.6";
 
 class FootaoGameCard extends HTMLElement {
 
@@ -130,15 +130,15 @@ class FootaoGameCard extends HTMLElement {
       return;
     }
 
-    const logoDom  = b.LogoDomicile  || b.logoDomicile  || b.team_domicile_logo  || "";
-    const logoExt  = b.LogoExterieur || b.logoExterieur || b.team_exterieur_logo || "";
-    const gameName = b.game          || b.event_name    || "";
-    const logo1    = b.Logo1         || b.logo1         || "";
-    const chaine1  = b.chaine1       || "";
-    const logo2    = b.Logo2         || b.logo2         || "";
-    const chaine2  = b.chaine2       || "";
-    const heure    = b.heure         || "";
-    const date     = b.date          || "";
+    const logoDom    = b.LogoDomicile  || b.logoDomicile  || b.team_domicile_logo  || "";
+    const logoExt    = b.LogoExterieur || b.logoExterieur || b.team_exterieur_logo || "";
+    const gameName   = b.game          || b.event_name    || "";
+    const logo1      = b.Logo1         || b.logo1         || "";
+    const diffuseur1 = b.diffuseur1    || "";
+    const logo2      = b.Logo2         || b.logo2         || "";
+    const diffuseur2 = b.diffuseur2    || "";
+    const heure      = b.heure         || "";
+    const date       = b.date          || "";
 
     this.innerHTML = `
       <ha-card>
@@ -271,21 +271,21 @@ class FootaoGameCard extends HTMLElement {
                     <span class="team-name">${b.domicile || ""}</span>
                   </div>
                   <div class="center">
-                    ${chaine1 ? `
+                    ${diffuseur1 ? `
                       <div class="channel-zone">
                         ${logo1 ? `<div class="sprite" style="${logo1}"></div>` : ""}
-                        <div class="chaine">${chaine1}</div>
+                        <div class="chaine">${diffuseur1}</div>
                       </div>
                     ` : ""}
 
-                    ${chaine2 ? `
+                    ${diffuseur2 ? `
                       <div class="channel-zone">
                         ${logo2 ? `<div class="sprite" style="${logo2}"></div>` : ""}
-                        <div class="chaine">${chaine2}</div>
+                        <div class="chaine">${diffuseur2}</div>
                       </div>
                     ` : ""}
 
-                    ${!chaine1 && !chaine2
+                    ${!diffuseur1 && !diffuseur2
                       ? `<div class="chaine">${state.state || ""}</div>`
                       : ""}
 
